@@ -1,0 +1,37 @@
+name: Rebuild APT repository
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'pool/**'
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install aptly
+        run: |
+          echo "deb http://deb.debian.org/debian bookworm main" | sudo tee /etc/apt/sources.list.d/aptly.list
+          sudo apt-get update
+          sudo apt-get install -y aptly
+
+      - name: Rebuild APT repository
+        run: |
+          aptly repo create -distribution=noble containermanager
+          aptly repo add containermanager pool/
+          aptly publish repo -distribution=noble -skip-signing containermanager
+          cp -r ~/.aptly/public/* .
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || git commit -m "Rebuild APT repository"
+          git push
