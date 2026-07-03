@@ -31,8 +31,8 @@ jobs:
         run: |
           aptly repo create containermanager
           aptly repo add containermanager pool/
-          aptly publish repo -distribution=noble -gpg-key=containermanager -batch -keyring=~/.gnupg/pubring.kbx containermanager
-          aptly publish repo -distribution=trixie -gpg-key=containermanager -batch -keyring=~/.gnupg/pubring.kbx containermanager
+          aptly publish repo -architectures=amd64,i386 -distribution=noble -gpg-key=containermanager -batch -keyring=~/.gnupg/pubring.kbx containermanager
+          aptly publish repo -architectures=amd64,i386 -distribution=trixie -gpg-key=containermanager -batch -keyring=~/.gnupg/pubring.kbx containermanager
           cp -r ~/.aptly/public/* .
 
       - name: Commit and push

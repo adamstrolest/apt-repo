@@ -1,0 +1,14 @@
+Package: containermanager
+Priority: optional
+Section: misc
+Maintainer: adamstrolest
+Architecture: i386
+Version: 1.0.0-1
+Filename: pool/main/c/containermanager/containermanager_1.0.0-1_i386.deb
+Size: 488
+MD5sum: cb233fea08a6859b5f325fe4a0dfa5bf
+SHA1: d03c507ae40dbeba7ecf8abc035b40f602f115cd
+SHA256: e6f2536b51c0d5f38a99d8e11b0c0bef7e86ac27ec5e779191b98b5fd6113b83
+SHA512: f8721029bcd1015b1173979e3939fe6e0b77a3680e1616db115cd3f103c7c22d9321eb412ead77e148170c98fa9cb7f02f146d13dead2ba3af138fd5033eea7b
+Description: containermanager (i386 dummy)
+
