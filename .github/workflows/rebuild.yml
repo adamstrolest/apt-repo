@@ -23,9 +23,10 @@ jobs:
 
       - name: Rebuild APT repository
         run: |
-          aptly repo create -distribution=noble containermanager
+          aptly repo create containermanager
           aptly repo add containermanager pool/
           aptly publish repo -distribution=noble -skip-signing containermanager
+          aptly publish repo -distribution=trixie -skip-signing containermanager
           cp -r ~/.aptly/public/* .
 
       - name: Commit and push
