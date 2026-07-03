@@ -4,6 +4,26 @@ Section: admin
 Installed-Size: 1024
 Maintainer: Container Manager Author <zwariad@gmail.com>
 Architecture: amd64
+Version: 2.0.0-1
+Depends: python3 (>= 3.10), python3-pyqt5, lxc (>= 1:5.0), libqtermwidget5-1, policykit-1
+Filename: pool/main/c/containermanager/containermanager_2.0.0-1_amd64.deb
+Size: 56356
+MD5sum: ed8a16a4f0bc60c23c962e5c493f4bd0
+SHA1: d16e1d7b4dafd41b74ba4ab2f2d1cb5880dd42ba
+SHA256: c24467feea97bd31ebf7f8d0ea96e072c299e3a098ae0e985978389c9a9bedba
+SHA512: ec8e34023e89b4f651a0ce59d4f25b116b66cf2be01865f3941dc0939eb5991fc70d44d27a2f44078d946f15850ddc1fe1e7169a0f98bf832b8f010205f0f773
+Description: LXC container manager with embedded terminal
+ A graphical application to create, start, stop, and delete
+ LXC containers with an embedded QTermWidget terminal emulator.
+ Supports 17 Linux distributions with auto-detection of
+ available shells (zsh, bash, sh).
+
+Package: containermanager
+Priority: optional
+Section: admin
+Installed-Size: 1024
+Maintainer: Container Manager Author <zwariad@gmail.com>
+Architecture: amd64
 Version: 1.0.0-1
 Depends: python3 (>= 3.10), python3-pyqt5, lxc (>= 1:5.0), libqtermwidget5-1, policykit-1
 Filename: pool/main/c/containermanager/containermanager_1.0.0-1_amd64.deb
