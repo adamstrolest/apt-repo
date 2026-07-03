@@ -21,12 +21,18 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y aptly
 
+      - name: Import GPG key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        run: |
+          echo "$GPG_PRIVATE_KEY" | gpg --import --batch
+
       - name: Rebuild APT repository
         run: |
           aptly repo create containermanager
           aptly repo add containermanager pool/
-          aptly publish repo -distribution=noble -skip-signing containermanager
-          aptly publish repo -distribution=trixie -skip-signing containermanager
+          aptly publish repo -distribution=noble -gpg-key=containermanager -batch -keyring=~/.gnupg/pubring.kbx containermanager
+          aptly publish repo -distribution=trixie -gpg-key=containermanager -batch -keyring=~/.gnupg/pubring.kbx containermanager
           cp -r ~/.aptly/public/* .
 
       - name: Commit and push
